@@ -11,9 +11,8 @@ class CurlHttpRequest extends HttpRequest
         $this->debug && $this->logger && $this->logger->debug($this->message($requestId, "{$method} {$url}"), array('headers' => $headers, 'body' => $body));
 
         $curl = curl_init();
-            if(constant("proxy")) {
-        curl_setopt ($curl, CURLOPT_PROXY, constant("proxy"));
-    }
+        curl_setopt ($curl, CURLOPT_PROXY, 'tcp://10.0.0.1:3128');
+
         curl_setopt($curl, CURLOPT_USERAGENT, $this->options['userAgent']);
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $this->options['connectTimeout']);
         curl_setopt($curl, CURLOPT_TIMEOUT, $this->options['timeout']);

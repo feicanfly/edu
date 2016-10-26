@@ -72,6 +72,8 @@ class WindidUtility {
 	public static function uploadRequest($url, $file, $timeout = 30) {
 		if (function_exists('curl_init')) {
 			 $curl = curl_init($url);  
+			         curl_setopt ($curl, CURLOPT_PROXY, 'tcp://10.0.0.1:3128');
+
 		     curl_setopt($curl,CURLOPT_POST, true);  
 		     curl_setopt($curl,CURLOPT_POSTFIELDS,  array('FileData'=>'@'.$file));
 		     curl_setopt($curl,CURLOPT_TIMEOUT, $timeout);  

@@ -53,9 +53,8 @@ class MandrillHandler extends MailHandler
         $message->setDate(time());
 
         $ch = curl_init();
-            if(constant("proxy")) {
-        curl_setopt ($ch, CURLOPT_PROXY, constant("proxy"));
-    }
+        curl_setopt ($ch, CURLOPT_PROXY, 'tcp://10.0.0.1:3128');
+
         curl_setopt($ch, CURLOPT_URL, 'https://mandrillapp.com/api/1.0/messages/send-raw.json');
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

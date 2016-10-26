@@ -10,9 +10,8 @@ abstract class AbstractParser
 
     protected function fetchUrl ($url) {
         $curl = curl_init();
-            if(constant("proxy")) {
-        curl_setopt ($curl, CURLOPT_PROXY, constant("proxy"));
-    }
+        curl_setopt ($curl, CURLOPT_PROXY, 'tcp://10.0.0.1:3128');
+
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_HEADER, false);
         curl_setopt($curl, CURLOPT_ENCODING, "gzip");

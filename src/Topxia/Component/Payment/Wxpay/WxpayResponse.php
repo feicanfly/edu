@@ -58,9 +58,8 @@ class WxpayResponse extends Response
     private function postRequest($url, $params)
     {
         $curl = curl_init();
-    if(constant("proxy")) {
-        curl_setopt ($curl, CURLOPT_PROXY, constant("proxy"));
-    }
+        curl_setopt ($curl, CURLOPT_PROXY, 'tcp://10.0.0.1:3128');
+
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_USERAGENT, 'Topxia Payment Client 1.0');
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);

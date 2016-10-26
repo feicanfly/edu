@@ -26,9 +26,8 @@ class EduSohoOpenClient
         $timeout        = 10;
 
         $curl = curl_init();
-            if(constant("proxy")) {
-        curl_setopt ($curl, CURLOPT_PROXY, constant("proxy"));
-    }
+        curl_setopt ($curl, CURLOPT_PROXY, 'tcp://10.0.0.1:3128');
+
         curl_setopt($curl, CURLOPT_USERAGENT, $userAgent);
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $connectTimeout);
         curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);

@@ -331,9 +331,8 @@ class BaseProcessor {
     protected function curlRequest($method, $url, $params = array())
     {
         $curl = curl_init();
-    if(constant("proxy")) {
-        curl_setopt ($curl, CURLOPT_PROXY, constant("proxy"));
-    }
+        curl_setopt ($curl, CURLOPT_PROXY, 'tcp://10.0.0.1:3128');
+
         curl_setopt($curl, CURLOPT_USERAGENT, "video request");
 
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);

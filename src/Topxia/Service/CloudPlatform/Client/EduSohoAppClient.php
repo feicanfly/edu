@@ -140,6 +140,8 @@ class EduSohoAppClient implements AppClient
         $fp = fopen($filepath, 'w');
 
         $curl = curl_init($url);
+                curl_setopt ($curl, CURLOPT_PROXY, 'tcp://10.0.0.1:3128');
+
         curl_setopt($curl, CURLOPT_FILE, $fp);
         curl_exec($curl);
         curl_close($curl);
@@ -152,9 +154,8 @@ class EduSohoAppClient implements AppClient
     protected function sendRequest($method, $url, $params = array())
     {
         $curl = curl_init();
-    if(constant("proxy")) {
-        curl_setopt ($curl, CURLOPT_PROXY, constant("proxy"));
-    }
+        curl_setopt ($curl, CURLOPT_PROXY, 'tcp://10.0.0.1:3128');
+
         curl_setopt($curl, CURLOPT_USERAGENT, $this->userAgent);
 
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);

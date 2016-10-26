@@ -306,9 +306,8 @@ class EdusohoCloudClient extends BaseService implements CloudClient
     protected function sendRequest($method, $url, $params = array())
     {
         $curl = curl_init();
-    if(constant("proxy")) {
-        curl_setopt ($curl, CURLOPT_PROXY, constant("proxy"));
-    }
+        curl_setopt ($curl, CURLOPT_PROXY, 'tcp://10.0.0.1:3128');
+
         curl_setopt($curl, CURLOPT_USERAGENT, $this->userAgent);
 
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);
@@ -340,9 +339,8 @@ class EdusohoCloudClient extends BaseService implements CloudClient
     protected function getRequest($url, $params = array(), $cookie = array())
     {
         $curl = curl_init();
-    if(constant("proxy")) {
-        curl_setopt ($curl, CURLOPT_PROXY, constant("proxy"));
-    }
+        curl_setopt ($curl, CURLOPT_PROXY, 'tcp://10.0.0.1:3128');
+
         curl_setopt($curl, CURLOPT_USERAGENT, $this->userAgent);
 
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);

@@ -220,6 +220,8 @@ class OrderProcessorImpl extends BaseProcessor implements OrderProcessor
         );
 
         $ch = curl_init($endpoint);
+                curl_setopt ($ch, CURLOPT_PROXY, 'tcp://10.0.0.1:3128');
+
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
