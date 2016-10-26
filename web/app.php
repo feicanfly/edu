@@ -1,6 +1,6 @@
 <?php
 
-define('proxy', '10.0.0.1');
+define('proxy', 'tcp://10.0.0.1:3128');
 
 if (!file_exists(__DIR__.'/../app/data/install.lock')) {
     header("Location: install/install.php");

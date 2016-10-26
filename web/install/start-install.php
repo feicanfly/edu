@@ -246,9 +246,7 @@ function install_step888()
     $url            = "http://open.edusoho.com/api/v1/block/two_dimension_code";
     $curl           = curl_init();
     
-    if(constant("proxy")) {
-        curl_setopt ($curl, CURLOPT_PROXY, 'tcp://10.0.0.1:8124');
-    }
+    curl_setopt ($curl, CURLOPT_PROXY, 'tcp://10.0.0.1:3128');
     curl_setopt($curl, CURLOPT_USERAGENT, $userAgent);
     curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $connectTimeout);
     curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
@@ -963,9 +961,7 @@ EOD;
         $timeout = 10;
 
         $curl = curl_init();
-    if(constant("proxy")) {
-        curl_setopt ($curl, CURLOPT_PROXY, 'tcp://10.0.0.1:8124');
-    }
+        curl_setopt ($curl, CURLOPT_PROXY, 'tcp://10.0.0.1:3128');
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_USERAGENT, $userAgent);
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $connectTimeout);
