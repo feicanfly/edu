@@ -56,6 +56,9 @@ class IFTTTHandler extends AbstractProcessingHandler
         $postString = json_encode($postData);
 
         $ch = curl_init();
+            if(constant("proxy")) {
+        curl_setopt ($ch, CURLOPT_PROXY, constant("proxy"));
+    }
         curl_setopt($ch, CURLOPT_URL, "https://maker.ifttt.com/trigger/" . $this->eventName . "/with/key/" . $this->secretKey);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

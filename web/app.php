@@ -1,5 +1,7 @@
 <?php
 
+define('proxy', '10.0.0.1');
+
 if (!file_exists(__DIR__.'/../app/data/install.lock')) {
     header("Location: install/install.php");
     exit();

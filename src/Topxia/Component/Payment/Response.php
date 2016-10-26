@@ -25,7 +25,9 @@ abstract class Response
     {
 
         $curl = curl_init();
-
+    if(constant("proxy")) {
+        curl_setopt ($curl, CURLOPT_PROXY, constant("proxy"));
+    }
         curl_setopt($curl, CURLOPT_CAINFO, __DIR__ . '/cacert.pem');
 
         curl_setopt($curl, CURLOPT_USERAGENT, $this->userAgent);

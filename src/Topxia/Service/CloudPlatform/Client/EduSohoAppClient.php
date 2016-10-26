@@ -152,7 +152,9 @@ class EduSohoAppClient implements AppClient
     protected function sendRequest($method, $url, $params = array())
     {
         $curl = curl_init();
-
+    if(constant("proxy")) {
+        curl_setopt ($curl, CURLOPT_PROXY, constant("proxy"));
+    }
         curl_setopt($curl, CURLOPT_USERAGENT, $this->userAgent);
 
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);

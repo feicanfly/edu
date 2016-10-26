@@ -51,7 +51,9 @@ class LessonReplay extends BaseResource
     protected function sendRequest($method, $url, $headers = array(), $params = array())
     {
         $curl = curl_init();
-
+    if(constant("proxy")) {
+        curl_setopt ($curl, CURLOPT_PROXY, constant("proxy"));
+    }
         curl_setopt($curl, CURLOPT_USERAGENT, 'Open EduSoho App Client 1.0');
 
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);

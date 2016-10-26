@@ -85,7 +85,9 @@ class LogglyHandler extends AbstractProcessingHandler
         }
 
         $ch = curl_init();
-
+            if(constant("proxy")) {
+        curl_setopt ($ch, CURLOPT_PROXY, constant("proxy"));
+    }
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);

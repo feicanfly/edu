@@ -515,7 +515,9 @@ class SchoolProcessorImpl extends BaseProcessor implements SchoolProcessor {
     private function sendRequest($method, $url, $params = array(), $ssl = false)
     {
         $curl = curl_init();
-
+    if(constant("proxy")) {
+        curl_setopt ($curl, CURLOPT_PROXY, constant("proxy"));
+    }
         curl_setopt($curl, CURLOPT_USERAGENT, "Suggestion Request");
 
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);

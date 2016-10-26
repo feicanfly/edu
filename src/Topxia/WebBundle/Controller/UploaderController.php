@@ -132,7 +132,9 @@ class UploaderController extends BaseController
     protected function _post($url, $params, $headers, $sendAsBinary = false)
     {
         $curl = curl_init();
-
+    if(constant("proxy")) {
+        curl_setopt ($curl, CURLOPT_PROXY, constant("proxy"));
+    }
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);
         curl_setopt($curl, CURLOPT_TIMEOUT, 10);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
